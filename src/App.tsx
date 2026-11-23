@@ -10,7 +10,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "https://hackathon-backend-837697756080.us-central1.run.app/health",
+        "https://hackathon-backend-837697756080.us-central1.run.app/sample",
       );
 
       if (!response.ok) {
@@ -18,7 +18,7 @@ function App() {
       }
 
       const data = await response.json();
-      setMessage(`バックエンドの応答：${data.status}`);
+      setMessage(data.message);
     } catch {
       setMessage("接続できませんでした");
     } finally {
@@ -30,7 +30,7 @@ function App() {
     <main>
       <h1>ハッカソン接続テスト</h1>
       <button onClick={checkHealth} disabled={loading}>
-        {loading ? "確認中…" : "API接続を確認"}
+        {loading ? "取得中…" : "DBのデータを取得"}
       </button>
       <p role="status">{message}</p>
     </main>
